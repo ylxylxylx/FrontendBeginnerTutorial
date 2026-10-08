@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        h1 {
+            text-align: center;
+        }
+
+        .hint {
+            display: inline-block;
+            color: white;
+            background-color: black;
+            padding: 10px;
+            /* 切角 */
+            border-radius: 5px;
+        }
+
+        .mrzhang {
+            text-align: center;
+        }
+
+        .tri {
+            height: 0;
+            width: 0;
+            border-top: 10px solid black;
+            border-right: 10px solid transparent;
+            border-left: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+            margin: 0 auto;
+        }
+        .hidden{
+            /* 隐藏后不能获取焦点 */
+            visibility: hidden;
+        }
+         #visible{
+            visibility:visible;
+            margin: 0;
+            padding: 0;
+         }
+         .hidden:hover{
+             visibility: visible;
+         }
+    </style>
+</head>
+
+<body>
+    <h1>顶部提示框/底部箭头</h1>
+
+
+    <div class="mrzhang">
+        <div class="hidden">
+            <div class="hint">我是张三</div>
+            <div class="tri"></div>
+            <p id="visible">张三</p>
+        </div>
+
+      
+
+    </div>
+
+    <div class="mrli"></div>
+</body>
+
+</html>

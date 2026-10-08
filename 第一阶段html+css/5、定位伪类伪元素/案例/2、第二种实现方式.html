@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #hidden{
+            
+            display: inline-block;
+            position: relative;
+            top: -40px;
+            visibility: hidden;
+        }
+
+        .mrzhang{
+            margin-top: 400px;
+        }
+        /* 当鼠标悬浮时 mrzhang下面的#hidden子元素 */
+        .mrzhang:hover #hidden{
+            visibility: visible;
+        }
+    </style>
+</head>
+<body>
+    
+
+    <div class="mrzhang">
+        张三
+        <span id="hidden">我是张三</span>
+    </div>
+</body>
+</html>

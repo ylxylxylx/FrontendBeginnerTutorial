@@ -1,3 +1,11 @@
+<!--
+ * @Author: ylx ylx@qq.com
+ * @Date: 2026-10-08 16:01:03
+ * @LastEditors: ylx ylx@qq.com
+ * @LastEditTime: 2026-10-08 16:26:24
+ * @FilePath: \FrontendBeginnerTutorial\README.md
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
 # FrontendBeginnerTutorial
 
 前端新手入门教程，从零开始系统学习前端开发。
@@ -7,7 +15,7 @@
 | 阶段 | 主题 | 状态 |
 |------|------|------|
 | 第一阶段 | HTML + CSS | ✅ 已完成 |
-| 第二阶段 | JavaScript | 📝 待更新 |
+| 第二阶段 | JavaScript | � 进行中 |
 | 第三阶段 | HTML5 + CSS3 | 📝 待更新 |
 | 第四阶段 | Node.js | 📝 待更新 |
 | 第五阶段 | Vue + React | 📝 待更新 |
@@ -44,11 +52,30 @@
 
 ---
 
+## 第二阶段：JavaScript
+
+编程语言基础，让页面动起来。
+
+### 目录结构
+
+```
+第二阶段 javaScript/
+├── 1、变量、运算符、分支/  # 编程语言介绍、JS执行过程、变量与数据类型、输入输出、运算符、分支语句
+└── 2、多分支和for循环/    # （待补充）
+```
+
+### 知识点概览
+
+- **JS 基础**：编程语言介绍、JavaScript 执行过程
+- **变量与类型**：变量声明、基本数据类型
+- **输入输出**：console.log、prompt、alert
+- **运算符**：算术运算符、关系运算符、逻辑运算符
+- **流程控制**：程序执行流程、分支语句（if/else、switch）
+- **练习**：基础及分支练习、运算符案例
+
+---
+
 ## 后续阶段（待更新）
-
-### 第二阶段：JavaScript
-
-> 编程语言基础，让页面动起来
 
 ### 第三阶段：HTML5 + CSS3
 

@@ -2,7 +2,7 @@
  * @Author: ylx ylx@qq.com
  * @Date: 2026-10-08 16:01:03
  * @LastEditors: ylx ylx@qq.com
- * @LastEditTime: 2026-10-08 16:26:24
+ * @LastEditTime: 2026-10-08 16:41:11
  * @FilePath: \FrontendBeginnerTutorial\README.md
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -61,7 +61,7 @@
 ```
 第二阶段 javaScript/
 ├── 1、变量、运算符、分支/  # 编程语言介绍、JS执行过程、变量与数据类型、输入输出、运算符、分支语句
-└── 2、多分支和for循环/    # （待补充）
+└── 2、多分支和for循环/    # switch多分支、while/do-while/for循环、break/continue、循环嵌套、练习
 ```
 
 ### 知识点概览
@@ -71,7 +71,9 @@
 - **输入输出**：console.log、prompt、alert
 - **运算符**：算术运算符、关系运算符、逻辑运算符
 - **流程控制**：程序执行流程、分支语句（if/else、switch）
-- **练习**：基础及分支练习、运算符案例
+- **循环**：while、do-while、for 循环、循环嵌套
+- **循环控制**：break 跳出循环、continue 跳过本次
+- **练习**：基础及分支练习、运算符案例、循环练习、综合作业
 
 ---
 

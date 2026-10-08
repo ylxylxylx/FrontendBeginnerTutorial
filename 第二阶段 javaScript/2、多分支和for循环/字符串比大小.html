@@ -1,0 +1,59 @@
+<!--
+ * @Author: ylx ylx@qq.com
+ * @Date: 2026-10-08 16:30:18
+ * @LastEditors: ylx ylx@qq.com
+ * @LastEditTime: 2026-10-08 16:53:52
+ * @FilePath: \FrontendBeginnerTutorial\第二阶段 javaScript\2、多分支和for循环\字符串比大小.html
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="author" content="金西振">
+    <title></title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    <!-- \u4E02
+
+    \u4f60\u597d -->
+<script>
+    console.log(5 > 3);
+    // 此时数字类型的字符串会 转成 纯数字再与前面的纯数字比较
+    console.log(5 > '3');//在进行比较的时候，会把'3'隐式转换为数字3
+    console.log('5' > 3);//在进行比较的时候，会把'5'隐式转换为数字5
+
+    // 0011 0000 -> 48
+
+    // 变量名区分大小写：myname 和 myName 是两个变量
+
+    // 比较两个字符串的大小：
+    // 你好 我好   a  b
+    // var a = prompt('数字1');
+    // var b = prompt('数字2');
+    // '10' > '6'
+    // alert(a > b);
+
+    console.log('1256' > '312');//这种比较为ASCII码比较，依次取每个字符，字符转为ASCII码进行比较，ASCII码先大的即为大；因为第一个字符3比2大所以后面就不用考虑了
+
+    // 总结一下：
+
+    // 1、纯字符串比较，转换成ASCII码在进行比较；
+    // 2、纯数字和数字字符串相比较，则将字符串数字隐式转换成数字再进行比较；
+    // 3、纯数字和非数字字符串比较，都返回false；
+
+    // console.log('2' > 'a');
+    // console.log('2' > '你好');
+    // console.log(999 > '!');//false
+
+    // var str = '\u4f60\u597d\u8f00'
+    // console.log(str);
+
+</script>
+</body>
+</html>

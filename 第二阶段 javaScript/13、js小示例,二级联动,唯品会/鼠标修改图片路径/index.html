@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            list-style: none;
+            margin: 0;
+            padding: 0;
+
+        }
+       
+        .ox{
+            width: 550px;
+            height: 600px;
+            background-color: #fff;
+            margin: 100px auto;
+
+
+        }
+        
+       
+       ul img{
+            width: 100px;
+            height: 80px;
+            float: left;
+            
+        }
+       
+       li{
+        float: left;
+        margin: 10px;
+       }
+       .box1{
+           width: 340px;
+           height: 280px;
+       }
+       .box1 img{
+           width: 100%;
+           height: 100%;
+       }
+    </style>
+</head>
+<body>
+   
+    <div class="ox"> 
+    <ul>
+        <li><img class="box1" src="" alt=""></li>
+        <li><img src=".//1.jpg" alt="">  </li>
+        <li><img src="./2.jpg" alt=""> </li>
+        <li><img src="./3.jpg" alt=""> </li>
+        <li><img src="./4.jpg" alt=""> </li>
+        <li><img src="./5.jpg" alt=""> </li>
+        <li><img src="./6.jpg" alt=""> </li>
+        <li><img src="./7.jpg" alt=""> </li>
+        <li><img src="./8.jpg" alt=""> </li>
+        <li><img src="./9.jpg" alt=""> </li>
+        <li><img src="./10.jpg" alt=""> </li>
+        <li><img src="./11.jpg" alt=""></li>
+    </ul>
+</div>
+
+<script>
+    var img=document.querySelectorAll("img")
+ 
+    for(var i=0;i<img.length;i++){
+        img[i].index=i
+        img[i].onmouseenter = function(){
+         img[0].src='./'+this.index+'.jpg'
+         console.log(this);    //this指向全部img
+        }
+    }
+</script>
+</body>
+</html>

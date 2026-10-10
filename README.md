@@ -2,7 +2,7 @@
  * @Author: ylx ylx@qq.com
  * @Date: 2026-10-08 16:01:03
  * @LastEditors: ylx ylx@qq.com
- * @LastEditTime: 2026-10-10 14:23:52
+ * @LastEditTime: 2026-10-10 18:04:51
  * @FilePath: \FrontendBeginnerTutorial\README.md
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -60,31 +60,42 @@
 
 ```
 第二阶段 javaScript/
-├── 1、变量、运算符、分支/       # 编程语言介绍、JS执行过程、变量与数据类型、输入输出、运算符、分支语句
-├── 2、多分支和for循环/         # switch多分支、while/do-while/for循环、break/continue、循环嵌套、练习
-├── 3、分支和循环练习讲解/      # 分支与循环综合练习、代码调试技巧
-├── 4、函数、提升、字符串处理/   # 函数定义与调用、参数与返回值、变量提升、字符串常用方法
-├── 5、JS内置对象/              # Math、Number、String、Array、Date等内置对象及常用方法
-├── 6、数组和arguments/         # 数组常用操作、数组遍历、冒泡排序、arguments对象
-├── 7、匿名函数、递归、转义字符/ # 匿名函数与自执行函数、递归、转义字符、综合练习
+├── 1、变量、运算符、分支/            # 编程语言介绍、JS执行过程、变量与数据类型、输入输出、运算符、分支语句
+├── 2、多分支和for循环/              # switch多分支、while/do-while/for循环、break/continue、循环嵌套
+├── 3、分支和循环练习讲解/           # 分支与循环综合练习、代码调试技巧
+├── 4、函数、提升、字符串处理/       # 函数定义与调用、参数与返回值、变量提升、字符串常用方法
+├── 5、JS内置对象/                   # Math、Number、String、Array、Date等内置对象及常用方法
+├── 6、数组和arguments/              # 数组常用操作、数组遍历、冒泡排序、arguments对象
+├── 7、匿名函数、递归、转义字符/     # 匿名函数与自执行函数、递归、转义字符、综合练习
 ├── 8、DOM节点、属性节点、Date、定时器/ # DOM基本概念、元素查找/遍历/增删改、Date对象、定时器
-├── 9、DOM鼠标事件、捕获和冒泡/  # 事件三种绑定方式、事件对象、捕获与冒泡、鼠标事件与坐标、拖拽
+├── 9、DOM鼠标事件、捕获和冒泡/      # 事件三种绑定方式、事件对象、捕获与冒泡、鼠标事件与坐标
 ├── 10、this、图形变换、过渡动画、帧动画/ # this指向、CSS 2D变换、过渡动画、帧动画、鼠标事件位置
-└── 11、键盘事件、window事件、尺寸和位置/ # 自定义属性、键盘事件、animate库、window事件、尺寸与位置
+├── 11、键盘事件、window事件、尺寸和位置/ # 自定义属性、键盘事件、animate库、window事件、尺寸与位置
+├── 12、百度新闻首页、过渡应用/      # 过渡动画应用、百度新闻首页实战
+├── 13、js小示例,二级联动,唯品会/   # 倒计时、全选反选、下拉菜单、二级联动、星级评分、唯品会滚动跟随
+├── 14、表单,window事件,BOM操作,简易轮播/ # 表单事件、错误监测、BOM对象、简易轮播
+├── 15、轮播图,拖拽事件,事件代理/   # 复杂轮播图、无缝轮播、拖拽事件、事件代理
+├── 16、cookie,storage,三级联动/    # Cookie、webStorage、三级联动、水果拼图、浏览器端数据保存
+├── 17、搜索历史,正则表达式/        # 搜索历史记录、正则表达式
+└── 18、拖拽,网络,AJAX/             # 拖拽回放、正则匹配、网络基础、AJAX请求、JSON数据格式
 ```
 
 ### 知识点概览
 
 - **JS 基础**：编程语言介绍、JavaScript 执行过程、变量与数据类型、输入输出
-- **运算符**：算术运算符、关系运算符、逻辑运算符、赋值运算符
-- **流程控制**：分支语句（if/else、switch）、循环（while、do-while、for）、break/continue
-- **函数**：函数定义与调用、参数与返回值、变量提升、作用域
-- **字符串**：字符串常用方法、字符串遍历、模板字符串
+- **运算符**：算术运算符、关系运算符、逻辑运算符、赋值运算符、自增自减、三目运算符
+- **数据类型转换**：隐式转换、显式转换（Number/String/Boolean）、字符串比较
+- **流程控制**：分支语句（if/else、switch）、循环（while、do-while、for）、break/continue、循环嵌套
+- **函数**：函数定义与调用、参数与返回值、变量提升、函数提升、作用域
+- **字符串**：字符串常用方法、字符串遍历、统计字符串
 - **内置对象**：Math、Number、String、Array、Date 等常用方法
-- **数组**：增删改查（push/pop/shift/unshift/splice）、遍历（for/for-in/forEach）、排序、去重
-- **DOM 操作**：节点类型、元素查找（querySelector）、遍历、内容修改、增删改
+- **数组**：增删改查（push/pop/shift/unshift/splice）、遍历（for/for-in/forEach）、排序、去重、冒泡排序
+- **arguments**：arguments 对象、不定参函数
+- **匿名函数与递归**：匿名函数、自执行函数、递归调用、斐波那契数列、转义字符
+- **DOM 操作**：节点类型、元素查找（querySelector）、遍历、内容修改、增删改、属性节点操作、CSS 属性操作
+- **Date 与定时器**：Date 对象、setTimeout/setInterval、倒计时与时间差
 - **事件系统**：三种事件绑定方式、事件对象 event、捕获与冒泡、事件传播控制
-- **鼠标事件**：click/mousedown/mouseup/mousemove、坐标系统（pageX/clientX/offsetX）、拖拽实现
+- **鼠标事件**：click/mousedown/mouseup/mousemove、坐标系统（pageX/clientX/offsetX）
 - **this 指向**：七种场景（全局、普通函数、对象方法、事件、构造函数、定时器、回调）
 - **CSS 变换与动画**：translate/scale/rotate、transition 过渡动画、animation 帧动画、@keyframes
 - **键盘事件**：onkeydown/onkeypress/onkeyup、keyCode、组合键判断
@@ -92,6 +103,22 @@
 - **尺寸与位置**：clientWidth/offsetWidth/scrollWidth、offsetLeft/getBoundingClientRect、scrollTop
 - **自定义属性**：data-* 属性、dataset、三种从页面向 JS 传值的方式
 - **动画库**：animate.css 的引入和使用
+- **过渡动画应用**：过渡动画实战技巧、百度新闻首页综合实战
+- **JS 小示例**：倒计时与时间差、全选与反选、下拉菜单、二级联动、星级评分、鼠标修改图片路径
+- **唯品会滚动跟随**：滚动事件、固定定位实战
+- **表单事件**：onfocus/onblur/onchange/oninput/onsubmit、表单验证
+- **错误监测**：try/catch/finally、throw、错误类型
+- **BOM 对象**：window、location、history、navigator、screen
+- **轮播图**：简易轮播、复杂轮播图、无缝轮播
+- **拖拽事件**：drag/dragstart/dragover/drop、拖拽回放
+- **事件代理**：事件委托原理与应用、动态元素事件绑定
+- **Cookie**：Cookie 的创建、读取、删除、有效期、路径
+- **Web Storage**：localStorage、sessionStorage、存储与读取、数据持久化
+- **三级联动**：省市区三级联动实现、数据驱动视图
+- **搜索历史记录**：搜索功能实现、历史记录存储与展示
+- **正则表达式**：正则语法、元字符、量词、边界、分组、正则匹配方案
+- **网络基础**：URL 结构、HTTP 协议、请求与响应、请求方式（GET/POST）
+- **AJAX**：XMLHttpRequest 对象、发起 AJAX 请求、form 表单请求、JSON 数据格式
 
 ---
 

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>三级联动</title>
+</head>
+<body>
+    <select name="省" id="province"></select>
+    <select name="市" id="city"></select>
+    <select name="区" id="area"></select>
+    <h1>省份-城市-区县</h1>
+</body>
+<script src="data/provinces.js"></script>
+<script src="data/cities.js"></script>
+<script src="data/areas.js"></script>
+<script>
+    // 找标签
+    var provSelect = document.getElementById("province")
+    var citySelect = document.getElementById("city")
+    var areaSelect = document.getElementById("area")
+    var result = document.querySelector("h1")
+
+    // 1, 循环省份列表,展示省份的下拉列表
+    provinces.forEach(function(item, index){
+        // 得到每一个省份对象
+        // console.log(item)
+        // 创建列表项,显示省份名
+        var option = document.createElement("option")
+        option.innerText = item.name
+        provSelect.appendChild(option)
+    });
+    // 省份渲染完成之后, 刷新城市列表
+    cityUpdate()
+
+    // 2, 当省份列表切换时, 刷新城市列表
+    provSelect.onchange = cityUpdate
+    // 刷新城市列表的函数
+    function cityUpdate(){
+        // 找到当前选中的省份 
+        console.log(provSelect.selectedIndex)  // 省份列表选中的索引
+        // 因为下拉项的索引与省份列表中省份索引一一对应, 所以可通过这个索引获取当前选中的省份数据
+        var currentProvince = provinces[provSelect.selectedIndex] 
+        console.log(currentProvince)
+        // 拿到这个省份的省份编码
+        var provinceCode = currentProvince.code
+
+        // 先清空城市列表
+        citySelect.innerHTML = ""
+        // 遍历城市列表
+        cities.forEach(function(item,i){
+            // console.log(item)  // 获取每一个城市对象
+            // 判断,如果 城市对象中的省份编码 和 当前选中的省份编码 相同,说明这个城市是当前省份的城市
+            if(item.provinceCode == provinceCode){
+                // 创建一个列表项添加到城市列表中
+                var option = document.createElement("option")
+                option.innerText = item.name
+                citySelect.appendChild(option)
+
+                // 使用标签自定义的dataset属性记录当前option对应城市的城市编码
+                option.dataset.index = item.code
+            }
+        })
+
+        // 城市列表刷新后,自动刷新区县列表
+        areaUpdate()
+    }
+
+    // 3, 当城市列表选中时,刷新区县列表
+    citySelect.onchange = areaUpdate;
+    // 刷新区县下拉列表的函数
+    function areaUpdate(){
+        // 此时不能像获取省份数据一样,通过城市下拉列表的选中索引从城市列表中取数据了, 因为城市下拉列表的索引和城市数据源列表的索引是不对应的
+        // 解决方案: 在城市下拉列表option中添加字段index记录每个城市的城市编码,选中option时,获取option上的index值, 即当前城市的编码
+        // selectedOptions 字段可获取到select下拉框选中的option集合
+        console.log(citySelect.selectedOptions) 
+        // 取出城市下拉列表中当前选中的option
+        var option = citySelect.selectedOptions[0]
+        // 取出当前选中这个option上绑定的城市编码
+        console.log(option.dataset.index)
+        var cityCode = option.dataset.index;
+
+        // 先清空区县列表
+        areaSelect.innerHTML = ""
+        // 循环区县列表
+        areas.forEach(function(item,i){
+            // 判断当前区县的城市编码 和 选中的城市编码是否一致, 如果一致就添加到区县下拉列表
+            if(item.cityCode == cityCode){
+                var option = document.createElement("option")
+                option.innerText = item.name
+                areaSelect.appendChild(option)
+            } 
+        })
+
+        // 区县刷新之后, 更新地址
+        locationUpdate()
+    }
+
+    // 区列表选中时,更新地址
+    areaSelect.onchange = locationUpdate
+
+    // 更新地址
+    function locationUpdate(){
+        // 先找到省市区下拉列表选中的option
+        var provOption = provSelect.selectedOptions[0]
+        var cityOption = citySelect.selectedOptions[0]
+        var areaOption = areaSelect.selectedOptions[0]
+        // 拼接省市区
+        result.innerText = provOption.innerText + ' - ' + cityOption.innerText + ' - ' + areaOption.innerText
+    }
+
+
+</script>
+</html>

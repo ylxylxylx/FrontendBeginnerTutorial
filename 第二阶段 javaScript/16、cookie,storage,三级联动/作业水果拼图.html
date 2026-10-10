@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>水果拼图</title>
+		<style>
+			div,table,td{
+				border: solid 1px black;
+			}
+			#fruitBox{
+				width: 300px;
+				height: 722px;
+			}
+			#tableBox{
+				width: 463px;
+				height: 722px;
+				background-image: url("images/看图识字.png");
+			}
+			body{
+				display: flex;
+				justify-content: space-around;
+			}
+			table{
+				border-collapse: collapse;
+				width: 422px;
+				height: 620px;
+				margin-left: 20px;
+				margin-top: 80px;
+			}
+			tr{
+				height: 25%;
+			}
+			td{
+				width: 25%;
+				text-align: center;
+				vertical-align: bottom;
+				border: 2px solid yellow;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="fruitBox">
+			<!--给每一个img标签和td标签都设置上编号，方便将来对比拖拽
+			是否正确-->
+			<img src="images/1.png" alt="" data-index="1" />
+			<img src="images/2.png" alt="" data-index="2" />
+			<img src="images/3.png" alt="" data-index="3" />
+			<img src="images/4.png" alt="" data-index="4" />
+			<img src="images/5.png" alt="" data-index="5" />
+			<img src="images/6.png" alt="" data-index="6" />
+			<img src="images/7.png" alt="" data-index="7" />
+			<img src="images/8.png" alt="" data-index="8" />
+			<img src="images/9.png" alt="" data-index="9" />
+			<img src="images/10.png" alt="" data-index="10" />
+			<img src="images/11.png" alt="" data-index="11" />
+			<img src="images/12.png" alt="" data-index="12" />
+			<img src="images/13.png" alt="" data-index="13" />
+			<img src="images/14.png" alt="" data-index="14" />
+			<img src="images/15.png" alt="" data-index="15" />
+			<img src="images/16.png" alt="" data-index="16" />
+		</div>
+		<div id="tableBox">
+			<table>
+				<tr>
+					<td data-index="1"></td>
+					<td data-index="2"></td>
+					<td data-index="3"></td>
+					<td data-index="4"></td>
+				</tr>
+				<tr>
+					<td data-index="5"></td>
+					<td data-index="6"></td>
+					<td data-index="7"></td>
+					<td data-index="8"></td>
+				</tr>
+				<tr>
+					<td data-index="9"></td>
+					<td data-index="10"></td>
+					<td data-index="11"></td>
+					<td data-index="12"></td>
+				</tr>
+				<tr>
+					<td data-index="13"></td>
+					<td data-index="14"></td>
+					<td data-index="15"></td>
+					<td data-index="16"></td>
+				</tr>
+			</table>
+		</div>
+	</body>
+	
+	<script>
+      
+	// //   1,阻止图片拖拽后在新窗口打开的这个默认行为
+	// // 在HTML中拖拽时阻止默认行为,为了能监听drop事件
+	document.documentElement.addEventListener('dragover',function(e){
+		e.preventDefault();
+	})
+	// 鼠标拖拽图片松开时会触发网页的drop事件,默认网页打开这张图,要在整个HTML中禁止drop事件的默认行为
+	document.documentElement.addEventListener('drop',function(e){
+		// console.log('drop 事件')
+		// 阻止默认行为,阻止打开当前拖拽的图片
+		e.preventDefault();
+
+		//阻止事件传播,阻止打开新窗口,
+		// e.stopImmediatePropagation(); 
+	})
+
+	// 在开始拖拽图片时,记录当前拖拽的是哪一个图片
+	var image ;  // 当前拖拽的图片
+	var imgs = document.getElementsByTagName('img')
+	for(var i = 0; i < imgs.length; i++){
+		imgs[i].ondragstart = function(event){
+			//用image这个变量记录当前拖拽的图片
+			image = this;  // event.target
+		}
+	}
+
+	
+	// 给每一个td监听drop事件,
+	var tds = document.getElementsByTagName('td')
+	for(var i = 0; i < tds.length; i++){
+		// 已经对HTML标签的dragover事件中阻止了默认行为,
+		//会同时阻止掉子元素td的dragover事件的默认行为
+		tds[i].ondrop = function(){
+			// console.log(this.dataset.index)
+			// console.log(image.dataset.index)
+			if(this.dataset.index == image.dataset.index){
+				// 如果图片和td相对应,那么把图片移动到td中
+				this.appendChild(image)
+			}
+		}
+	}
+
+		
+	</script>
+	
+</html>

@@ -1,0 +1,157 @@
+/* 顶部导航 */
+.header-nav{
+    height: 32px;
+    background-color: #fff;
+    border-bottom: 1px solid #ebebeb;
+}
+/* 头部 */
+.header{
+    height: 100px;
+}
+.header-box{
+    height: 100%;
+    background-color: lightblue;
+}
+/* 导航菜单 */
+.nav{
+    width: 100%;
+    height: 40px;
+    background-color: #01204f;
+    /* position: fixed; */
+    top: 0;
+    left: 0;
+    color: #fff;
+    /* 固定的导航栏，注意设置层级 */
+    z-index: 9;
+}
+.nav .nav-list{
+    position: relative;
+    /* background-color: lightgreen;
+    height: 60px; */
+}
+.nav .nav-list li{
+    float: left;
+    line-height: 40px;
+    font-weight: 700;
+    font-size: 14px;
+    position: relative;
+    z-index: 2;
+}
+.nav .nav-list li.first{
+    background-color: #c00;
+}
+.nav-list li a{
+    display: block;
+    padding: 0 10px;
+}
+.nav .nav-list li img{
+    /* transform: translate(0,3px); */
+    /* position: relative;
+    top: 3px; */
+    vertical-align: -3px;
+}
+.nav-list .bg{
+    height: 100%;
+    width: 72px;
+    background-color: #c00;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    transition: all 0.2s linear;
+}
+
+/* .nav-list:hover .bg{
+    left: 200px;
+} */
+
+
+/* 主要内容 */
+.main-box{
+    height: 2000px;
+    background-color: lightgrey;
+    position: relative;
+}
+
+
+
+/* 内联元素直接设置图形变换 transform 不起作用，可以改为inline-block 或者blobk*/
+span{
+    display: inline-block;
+    /* transform: rotate(30deg); */
+    /* transform: translate(30px); */
+    transform: scale(0.5);
+    background-color: orange;
+    font-size: 60px;
+    position: absolute;
+    top: 100px;
+    left: 100px;
+}
+
+
+
+/* 右侧固定侧边栏 */
+.right-nav{
+    width: 48px;
+    /* height: ; */
+    /* background-color: red; */
+    position: fixed;
+    bottom: 20px;
+    left: calc(50% + 492px + 10px);
+    overflow: hidden;
+}
+.right-nav-box{
+    transform: translateY(53px);
+    transition: all 0.2s linear;
+}
+.right-nav-box li{
+    width: 48px;
+    height: 48px;
+    margin-bottom: 5px;
+    background-image: url('../images/icon-merged_b8bc211.png');
+    border-radius: 5px;
+    overflow: hidden;
+}
+.right-nav-box li.report{
+    width: 48px;
+    height: 92px;
+    background-image: url('../images/report_02cdef2.png');
+}
+
+.right-nav-box li.favorite{
+    background-position-y: -51px;
+}
+.right-nav-box li.search{
+    background-position-y: -204px;
+}
+.right-nav-box li.feed{
+    background-position-y: -255px;
+}
+.right-nav-box li.go-top{
+    background-position-y: -306px;
+}
+.right-nav-box li a{
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: #18448e;
+    color: #fff;
+    font-weight: 700;
+    font-size: 14px;
+    border-radius: 5px;
+    transform: rotate(90deg);
+    transform-origin: -50% 50%;
+    transition: all 0.2s linear;
+}
+.right-nav-box li.report a{
+    transform-origin: -100% 50%; 
+}
+.right-nav-box li:hover a{
+    transform: rotate(0);
+}
+.right-nav-box li.go-top a{
+    background-color: transparent;
+}
+.right-nav-box li.go-top:hover{
+    background-position-y: -357px;
+}

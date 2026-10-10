@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="author" content="金西振">
+    <title></title>
+    <style>
+        body{
+            margin: 0;
+        }
+        .outer{
+            width: 200px;
+            height: 200px;
+            margin: auto;
+            /* background-color: lightseagreen; */
+            position: fixed;
+            right: 30px;
+            bottom: 50%;
+            overflow: hidden;
+        }
+        .box{
+            width: 200px;
+            height: 200px;
+            background-color: lightblue;
+            position: relative;
+        }
+        .content{
+            width: 200px;
+            height: 60px;
+            background-color: red;
+            /* top/bottom/left/right 设置百分比的时候，参照的是有定位的父级元素 */
+            position: absolute;
+            top: 0;
+            left: 100%;
+            /* translate 百分比参照的是自身宽度 */
+            /* transform: translate(100%); */
+
+            transition: all 0.2s linear;
+        }
+        /* .box:hover .content{
+            left: 0;
+        } */
+    </style>
+</head>
+<body>
+   <div class="outer">
+        <div class="box">
+            <div class="content">
+                内容
+            </div>
+        </div>
+   </div>
+   <div style="background-color: orange;" >
+        <p>段落01</p>
+        <p>段落02</p>
+        <p>段落03</p>
+        <p>段落04</p>
+        <p>段落05</p>
+        <p>段落06</p>
+        <p>段落07</p>
+        <p>段落08</p>
+        <p>段落09</p>
+        <p>段落10</p>
+        <p>段落11</p>
+        <p>段落12</p>
+        <p>段落13</p>
+        <p>段落14</p>
+        <p>段落15</p>
+        <p>段落16</p>
+        <p>段落17</p>
+        <p>段落18</p>
+        <p>段落19</p>
+        <p>段落20</p>
+        <p>段落21</p>
+        <p>段落22</p>
+        <p>段落23</p>
+        <p>段落24</p>
+        <p>段落25</p>
+        <p>段落26</p>
+        <p>段落27</p>
+        <p>段落28</p>
+        <p>段落29</p>
+        <p>段落30</p>
+        <p>段落31</p>
+        <p>段落32</p>
+        <p>段落33</p>
+        <p>段落34</p>
+        <p>段落35</p>
+        <p>段落36</p>
+        <p>段落37</p>
+        <p>段落38</p>
+        <p>段落39</p>
+        <p>段落40</p>
+        <p>段落41</p>
+        <p>段落42</p>
+        <p>段落43</p>
+        <p>段落44</p>
+        <p>段落45</p>
+        <p>段落46</p>
+        <p>段落47</p>
+        <p>段落48</p>
+        <p>段落49</p>
+        <p>段落50</p>
+    </div>
+<script>
+    var content = document.querySelector('.content');
+
+    // 在js中把 css中触发条件为 :hover 改为 scroll事件触发，通过滚动距离判定显示和隐藏
+
+    // 当页面向下滚动300px像素的时候，让 content 出现，小于300的时候隐藏
+    window.onscroll = function(){
+        var scrollTop = document.scrollingElement.scrollTop;
+        if (scrollTop >= 300) {
+            content.style.left = 0;
+        }else{
+            content.style.left = '100%';
+        }
+    }
+</script>
+</body>
+</html>

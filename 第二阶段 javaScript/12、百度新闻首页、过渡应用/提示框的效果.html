@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        div{
+            width: 573px;
+            height: 300px;
+            border: 1px solid black;
+            padding: 10px;
+            text-align: center;
+            margin: 50px auto; 
+        }
+        
+        li{
+            width: 100px;
+            height: 100px;
+            line-height: 40px;
+            margin: 0 10px 10px 0;
+            float: left;
+            border: 1px solid black;
+            position: relative;
+            transition: all .5s linear;
+        }
+        .img{
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: none;
+            border: 1px solid gray;
+            background-color: rgb(20, 5, 5);
+            transform: scale(1.5);
+            z-index: 2;
+        }
+        .active{ 
+            display: block; 
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>蜡笔小新</h1>
+    <ul>
+        <li>
+            <h3>lbxx</h3>
+            <p>蜡笔小新</p>
+            <img class="img" src="./xiao.png" alt="">
+        </li>
+        <li>
+            <h3>lbxx</h3>
+            <p>蜡笔小新</p>
+            <img class="img" src="./xiao.png" alt="">
+        </li>
+        <li>
+            <h3>lbxx</h3>
+            <p>蜡笔小新</p>
+            <img class="img" src="./xiao.png" alt="">
+        </li>
+        <li>
+            <h3>lbxx</h3>
+            <p>蜡笔小新</p>
+            <img class="img" src="./xiao.png" alt="">
+        </li>
+        <li>
+            <h3>lbxx</h3>
+            <p>蜡笔小新</p>
+            <img class="img" src="./xiao.png" alt="">
+        </li>
+        <li>
+        
+            <h3>lbxx</h3>
+            <p>蜡笔小新</p>
+            <img class="img" src="./xiao.png" alt="">
+        </li>
+        <li>
+            <h3>lbxx</h3>
+            <p>蜡笔小新</p>
+            <img class="img" src="./xiao.png" alt="">
+        </li>
+        <li>
+            <h3>lbxx</h3>
+            <p>蜡笔小新</p>
+            <img class="img" src="./xiao.png" alt="">
+        </li>
+        <li>
+            <h3>lbxx</h3>
+            <p>蜡笔小新</p>
+            <img class="img" src="./xiao.png" alt="">
+        </li>
+        <li>
+            <h3>lbxx</h3>
+            <p>蜡笔小新</p>
+            <img class="img" src="./xiao.png" alt="">
+        </li>
+    </ul>
+
+</div>
+ <script>
+
+    var li = document.querySelectorAll('li');       
+        var img = document.querySelectorAll('img');
+        
+        for(var i=0;i<li.length;i++){
+            li[i].d = i;     
+            li[i].onmouseenter = function(){      
+                for(var j=0;j<li.length;j++){
+                    img[j].classList.remove('active');    
+                }
+                img[this.d].classList.add('active');   
+            }
+            li[i].onmouseleave = function(){        
+                for(var j=0;j<li.length;j++){
+                    img[j].classList.remove('active');
+                }
+            }
+        }
+ </script>
+</body>
+</html>

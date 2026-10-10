@@ -1,0 +1,35 @@
+*{
+    box-sizing: border-box;
+}
+body,p,h1,h2,h3,h4,h5,h6,input,table,tr,td,button,dl,dt,dd{
+    margin: 0;
+    padding: 0;
+}
+ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+a{
+    text-decoration: none;
+    color: inherit;
+    font-size: inherit;
+}
+
+
+/* 通用类名 */
+.container{
+    width: 984px;
+    margin: 0 auto;
+}
+.clear{
+    clear: both;
+}
+/* 伪元素：伪元素的功能能够使用一个标签元素来替代 */
+.clearfix::after{
+    content: 'xxxxx';
+    display: block;
+    clear: both;
+    height: 0;
+    visibility: hidden;
+}

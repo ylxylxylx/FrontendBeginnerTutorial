@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./red.css">
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        .min{
+            width: 700px;
+            margin: auto;
+        }
+        .min div{
+            width: 20px;height: 20px;
+            display: inline-block;
+            margin-top: 10px;
+        }
+        .navigation{
+            width: 700px;height: 50px;
+            margin: auto;
+        }
+        .nav{
+            width: 100px;height: 50px;
+            text-align: center;
+            line-height: 50px;
+            float: left;
+            background-color: yellowgreen;
+            color: #fff;
+            border: 5px solid #fff;
+        }
+        .min1{
+            border: 5px solid red;
+            background-color: red;
+        }
+        .min2{
+            border: 5px solid green;
+            background-color: green;
+        }
+        .min3{
+            border: 5px solid black;
+            background-color: black;
+        }
+        /* 当前选中的标签 */
+        .active{
+            background-color: #fff;
+        }
+        /* .current{
+            background-color: ;
+        } */
+    </style>
+</head>
+<body>
+    <div class="min">
+        <div id="red" class="min1 btn active"></div>
+        <div id="green" class="min2 btn"></div>
+        <div id="black" class="min3 btn"></div>
+    </div>
+    <div class="navigation">
+        <div class="nav">新闻</div>
+        <div class="nav">娱乐</div>
+        <div class="nav">体育</div>
+        <div class="nav">电影</div>
+        <div class="nav">音乐</div>
+        <div class="nav">旅游</div>
+    </div>
+<script>
+    console.log(document.querySelectorAll('*'));
+    console.log(document.all);
+
+    var navs = document.querySelectorAll('.nav');
+    var link = document.querySelector('link');
+
+
+    var colors = ['red', 'green', 'black'];
+    var colors2 = ['#c89', '#8f9', '#aaa'];
+
+    var btns = document.querySelectorAll('.min .btn');
+
+    // var lastIndex = 0;//记录上一个索引值
+    // for(var i = 0; i < btns.length; i++){
+    //     btns[i].index = i;
+    //     btns[i].onclick = function(){
+    //         btns[lastIndex].classList.remove('active');//移除上一个元素的类名
+    //         btns[this.index].classList.add('active');//给点击的元素添加类名
+    //         lastIndex = this.index;//记录本次点击的索引值，当下一次再点击的时候，这个索引值就成了上一次的索引值
+
+    //         // 切换link引用的css文件
+    //         link.href = colors[this.index] + '.css';
+
+    //         // for(var i = 0; i < navs.length; i++){
+    //         //     navs[i].style.backgroundColor = colors[this.index];
+    //         //     document.body.style.backgroundColor = colors2[this.index];
+    //         // }
+    //     }
+    // }
+
+
+    // 给自己添加类名，把其他元素的类名都移除
+    for(var i = 0; i < btns.length; i++){
+        btns[i].index = i;
+        btns[i].onclick = function(){
+            // 先把所有的btn的active类名移除
+            for(var j = 0; j < btns.length; j++){
+                btns[j].classList.remove('active');
+            }
+            // 再把点击的btn添加active类名
+            this.classList.add('active');
+
+            // 切换link引用的css文件
+            // link.href = colors[this.index] + '.css';
+            // 利用id向js传值：this.id获取id的值：red green black
+            link.href = this.id + '.css';
+
+            // for(var i = 0; i < navs.length; i++){
+            //     navs[i].style.backgroundColor = colors[this.index];
+            //     document.body.style.backgroundColor = colors2[this.index];
+            // }
+        }
+    }
+
+
+</script>
+</body>
+</html>

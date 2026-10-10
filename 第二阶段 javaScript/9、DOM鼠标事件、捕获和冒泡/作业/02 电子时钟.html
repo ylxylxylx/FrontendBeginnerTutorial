@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="author" content="金西振">
+    <title></title>
+    <style>
+        body{
+            overflow: hidden;
+        }
+        .box{   
+            /* 线性渐变 */
+            /* background-image: linear-gradient(to right, #f56, #0fa);  */
+            /* 径向渐变 */
+            /* background-image: radial-gradient(circle, #f00, #00f); */
+            position: absolute;
+            top: 0; right: 0; bottom: 0; left: 0;
+            width: 500px;
+            height: 300px;
+            margin: auto;
+            text-align: center;
+        }
+        .time{
+            font-size: 100px;
+            font-family: Digital Dismay;
+        }
+        .date{
+            font-size: 30px;
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="time">09:25:32</div>
+        <div class="date">2020年08月24日 星期一</div>
+    </div>
+<script>
+
+    var time = document.querySelector('.time');
+    var date = document.querySelector('.date');
+    
+    function updatedTime() {
+        var now = new Date();
+
+        // 获取时分秒
+        var hour = now.getHours();
+        var minutes = now.getMinutes();
+        var seconds = now.getSeconds();
+
+        time.innerHTML = prefix0(hour) +':'+ prefix0(minutes) +':'+ prefix0(seconds);
+
+        // 获取年月日 星期
+        var year = now.getFullYear();
+        var month = now.getMonth()+1;
+        var day = now.getDate();
+        
+        var week = now.getDay();//0-6
+        
+        date.innerHTML = year +'年'+ prefix0(month) +'月'+ prefix0(day) +'日 '+ getWeek(week);
+    }
+    updatedTime();
+    setInterval(updatedTime,1000);
+
+
+    //添加前缀0
+    function prefix0(n){
+        return n<10 ? '0'+n : n;
+    }
+    //获取星期
+    function getWeek(n){
+        switch (n) {
+            case 0:
+                return '星期日'
+            case 1:
+                return '星期一'
+            case 2:
+                return '星期二'
+            case 3:
+                return '星期三'
+            case 4:
+                return '星期四'
+            case 5:
+                return '星期五'
+            case 6:
+                return '星期六'
+        
+        }
+    }
+
+</script>
+</body>
+</html>

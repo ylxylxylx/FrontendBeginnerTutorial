@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="author" content="金西振">
+    <title></title>
+    <style>
+        body{
+            margin: 0;
+        }
+        .container{
+            width: 900px;
+            margin: auto;
+        }
+        .header{
+            height: 100px;
+            background-color: lightblue;
+        }
+        .nav{
+            height: 50px;
+            width: 100%;
+            top: 0;
+            left: 0;
+            background-color: lightcoral;
+        }
+        .nav-fixed{
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+        .main{
+            height: 2000px;
+            background-color: lightgray;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            头部
+        </div>
+    </div>
+    <div class="nav">
+        <div class="container nav-box">
+            导航
+        </div>
+    </div>
+    <div class="main">
+        <div class="container">
+            主要内容
+        </div>
+    </div>
+<script>
+    var nav = document.querySelector('.nav');
+    window.onscroll = function(){
+        var scrollTop = document.scrollingElement.scrollTop;
+        // console.log(scrollTop);
+        // if (scrollTop >= 100) {
+        //     // console.log('固定位置');
+        //     nav.classList.add('nav-fixed');
+        // }else{
+        //     nav.classList.remove('nav-fixed');
+        // }
+
+        if (scrollTop >= 100) {
+            // console.log('固定位置');
+            nav.style.position = 'fixed';
+        }else{
+            nav.style.position = 'static';
+        }
+    }
+</script>
+</body>
+</html>

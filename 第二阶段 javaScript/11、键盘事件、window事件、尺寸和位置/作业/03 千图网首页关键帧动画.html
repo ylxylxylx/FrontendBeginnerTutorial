@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        .outer{
+            width: 260px;
+            height: 310px;
+            border-radius: 5px;
+            /* margin: 200px auto; */
+            /* background-color: rgba(0, 0, 0, 0.3); */
+            padding: 5px;
+            float: left;
+        }
+        .box {
+            width: 250px;
+            height: 300px;
+            border: 1px solid red;
+            overflow: hidden;
+            position: relative;
+            border-radius: 5px;
+        }
+        .img-box {
+            width: 610px;
+            display: flex;
+            flex-wrap: wrap;
+            transform: rotate(30deg);
+            animation: move 10s linear infinite alternate;
+            position: relative;
+            left: -175px;
+            top: -8%;
+            z-index: -1;
+        }
+        .img-box div {
+            width: 200px;
+            height: 250px;
+        }
+        .img-box div>img {
+            width: 200px;
+            height: 250px;
+        }
+
+        @keyframes move {
+            0% {
+                top: -8%
+            }
+
+            100% {
+                top: -130%
+            }
+        }
+        .info{
+            width: 100%;
+            height: 60px;
+            background-color: red;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            z-index: 1;
+        }
+        .overlay{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.3);
+            display: none;
+        }
+        .outer:hover .overlay{
+            display: block;
+        }
+        .outer:hover{
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 相框 -->
+    <div class="outer">
+        <div class="box">
+            <!-- 图片 -->
+            <div class="img-box">
+                <div>
+                    <img src="https://preview.qiantucdn.com/58pic/35/66/42/08G58PICZZ2Tf0zd3UhIy_PIC2018.jpg!qt324new_nowater"
+                        alt="">
+                </div>
+                <div>
+                    <img src="https://preview.qiantucdn.com/58pic/35/20/71/53k58PICvs43ehMeXc236_PIC2018.jpg!qt324new_nowater"
+                        alt="">
+                </div>
+                <div>
+                    <img src="https://preview.qiantucdn.com/58pic/36/29/63/86A58PICMeeqet6kHRa7D_PIC2018.jpg!qt324new_nowater"
+                        alt="">
+                </div>
+                <div>
+                    <img src="https://preview.qiantucdn.com/58pic/36/38/31/70v58PIC864ItGZge7e2W_PIC2018.jpg!qt324new_nowater"
+                        alt="">
+                </div>
+                <div>
+                    <img src="https://preview.qiantucdn.com/58pic/35/18/80/57058PICfvRYH24f7xxdS_PIC2018.jpg!qt324new_nowater"
+                        alt="">
+                </div>
+                <div>
+                    <img src="https://preview.qiantucdn.com/58pic/35/33/54/85y58PICgtD9cf4fx1d7d_PIC2018.jpg!qt324new_nowater"
+                        alt="">
+                </div>
+                <div>
+                    <img src="https://preview.qiantucdn.com/58pic/35/35/61/37558PICx8qpzEpRc1f0C_PIC2018.jpg!qt324new_nowater"
+                        alt="">
+                </div>
+                <div>
+                    <img src="https://preview.qiantucdn.com/58pic/35/34/28/30G58PICS7eU08FN7wVhr_PIC2018.jpg!qt324new_nowater"
+                        alt="">
+                </div>
+                <div>
+                    <img src="https://preview.qiantucdn.com/58pic/35/18/81/23S58PICu58PICQW58PICvYAaEt85_PIC2018.jpg!qt324new_nowater"
+                        alt="">
+                </div>
+            </div>
+            <div class="info">
+                xxxxx
+            </div>
+            <!-- 遮罩层 -->
+            <div class="overlay">
+                <button>订阅</button>
+            </div>
+        </div>
+    </div>
+    <div class="outer">
+        <div class="box">
+            <!-- 图片 -->
+            <div class="img-box">
+                <div>
+                    <img src="https://preview.qiantucdn.com/58pic/35/66/42/08G58PICZZ2Tf0zd3UhIy_PIC2018.jpg!qt324new_nowater"
+                        alt="">
+                </div>
+                <div>
+                    <img src="https://preview.qiantucdn.com/58pic/35/20/71/53k58PICvs43ehMeXc236_PIC2018.jpg!qt324new_nowater"
+                        alt="">
+                </div>
+                <div>
+                    <img src="https://preview.qiantucdn.com/58pic/36/29/63/86A58PICMeeqet6kHRa7D_PIC2018.jpg!qt324new_nowater"
+                        alt="">
+                </div>
+                <div>
+                    <img src="https://preview.qiantucdn.com/58pic/36/38/31/70v58PIC864ItGZge7e2W_PIC2018.jpg!qt324new_nowater"
+                        alt="">
+                </div>
+                <div>
+                    <img src="https://preview.qiantucdn.com/58pic/35/18/80/57058PICfvRYH24f7xxdS_PIC2018.jpg!qt324new_nowater"
+                        alt="">
+                </div>
+                <div>
+                    <img src="https://preview.qiantucdn.com/58pic/35/33/54/85y58PICgtD9cf4fx1d7d_PIC2018.jpg!qt324new_nowater"
+                        alt="">
+                </div>
+                <div>
+                    <img src="https://preview.qiantucdn.com/58pic/35/35/61/37558PICx8qpzEpRc1f0C_PIC2018.jpg!qt324new_nowater"
+                        alt="">
+                </div>
+                <div>
+                    <img src="https://preview.qiantucdn.com/58pic/35/34/28/30G58PICS7eU08FN7wVhr_PIC2018.jpg!qt324new_nowater"
+                        alt="">
+                </div>
+                <div>
+                    <img src="https://preview.qiantucdn.com/58pic/35/18/81/23S58PICu58PICQW58PICvYAaEt85_PIC2018.jpg!qt324new_nowater"
+                        alt="">
+                </div>
+            </div>
+            <div class="info">
+                xxxxx
+            </div>
+            <!-- 遮罩层 -->
+            <div class="overlay">
+                <button>订阅</button>
+            </div>
+        </div>
+    </div>
+    <div class="outer">
+        <div class="box">
+            <!-- 图片 -->
+            <div class="img-box">
+                <div>
+                    <img src="https://preview.qiantucdn.com/58pic/35/66/42/08G58PICZZ2Tf0zd3UhIy_PIC2018.jpg!qt324new_nowater"
+                        alt="">
+                </div>
+                <div>
+                    <img src="https://preview.qiantucdn.com/58pic/35/20/71/53k58PICvs43ehMeXc236_PIC2018.jpg!qt324new_nowater"
+                        alt="">
+                </div>
+                <div>
+                    <img src="https://preview.qiantucdn.com/58pic/36/29/63/86A58PICMeeqet6kHRa7D_PIC2018.jpg!qt324new_nowater"
+                        alt="">
+                </div>
+                <div>
+                    <img src="https://preview.qiantucdn.com/58pic/36/38/31/70v58PIC864ItGZge7e2W_PIC2018.jpg!qt324new_nowater"
+                        alt="">
+                </div>
+                <div>
+                    <img src="https://preview.qiantucdn.com/58pic/35/18/80/57058PICfvRYH24f7xxdS_PIC2018.jpg!qt324new_nowater"
+                        alt="">
+                </div>
+                <div>
+                    <img src="https://preview.qiantucdn.com/58pic/35/33/54/85y58PICgtD9cf4fx1d7d_PIC2018.jpg!qt324new_nowater"
+                        alt="">
+                </div>
+                <div>
+                    <img src="https://preview.qiantucdn.com/58pic/35/35/61/37558PICx8qpzEpRc1f0C_PIC2018.jpg!qt324new_nowater"
+                        alt="">
+                </div>
+                <div>
+                    <img src="https://preview.qiantucdn.com/58pic/35/34/28/30G58PICS7eU08FN7wVhr_PIC2018.jpg!qt324new_nowater"
+                        alt="">
+                </div>
+                <div>
+                    <img src="https://preview.qiantucdn.com/58pic/35/18/81/23S58PICu58PICQW58PICvYAaEt85_PIC2018.jpg!qt324new_nowater"
+                        alt="">
+                </div>
+            </div>
+            <div class="info">
+                xxxxx
+            </div>
+            <!-- 遮罩层 -->
+            <div class="overlay">
+                <button>订阅</button>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+
+</script>
+
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" overlay="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background: rgb(227, 243, 206);
+        }
+        .all{
+            width: 522px;
+            height: 489px;
+            margin: 0 auto;
+            margin-top: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+        .pic{
+            width: 522px;
+            height: 489px;
+            cursor: pointer;
+
+        }
+        
+        .overlay{
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.3);
+            text-align: center;
+            cursor: pointer;
+            position: absolute;
+            top: 0;
+            left: 0;
+            /* display: none; */
+            opacity: 0;
+            transition: all 0.2s linear;
+        }
+        .p1{
+            width: 100px;
+            height: 40px;
+            line-height: 40px;
+            background: rgba(178, 231, 157);
+            position: absolute;
+            top: -40px;
+            right: 15px;
+            transition: all 0.2s linear;  
+            
+        }
+        .p2{
+            width: 200px;
+            height: 40px;
+            line-height: 40px;
+            background: rgba(189, 235, 183);
+            position: absolute;
+            bottom: -40px;
+            left: 150px;
+            transition: all 0.2s linear;  
+        }
+        .all:hover .p1{
+            transform: translateY(50px); 
+        }
+        .all:hover .p2{
+            transform: translateY(-50px); 
+        }
+        .all:hover .overlay{
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="all">
+        <div class="pic">
+            <img src="背景.png" alt="我们">
+        </div>
+        <div class="overlay">
+            <p class="p1">收藏</p>
+            <p class="p2">免费下载</p>
+        </div>
+    </div>
+</body>
+</html>

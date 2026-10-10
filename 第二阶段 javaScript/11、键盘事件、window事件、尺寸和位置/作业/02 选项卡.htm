@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="author" content="段帅">
+    <title></title>
+    <style>
+        .box{
+            width: 500px;
+            /* height: 600px; */
+            background-color: #ccc;
+            border: 1px solid #000;
+        }
+        .box span{
+            display: inline-block;
+            padding: 10px;
+            background-color: #000;
+            color: #fff;
+        }
+        .box span:hover{
+            background-color: rgb(233, 150, 150);
+        }
+        .box .active{
+            background-color: rgb(233, 150, 150);
+        }
+        ul{
+            display: none;
+        }
+        .current{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <span class="active">第一节</span>
+        <span>第二节</span>
+        <span>第三节</span>
+        <div class="list-box">
+            <ul class="current">
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+            </ul>
+            <ul>
+                <li>111</li>
+                <li>222</li>
+            </ul>  
+            <ul>
+                <li>1111111</li>
+                <li>2222222</li>
+                <li>3333333</li>
+                <li>1111111</li>
+                <li>2222222</li>
+                <li>3333333</li>
+            </ul>
+        </div>
+    </div>
+
+
+<script>
+    var span=document.querySelectorAll('span');
+    var ul=document.querySelectorAll('ul');
+    // console.log(ul);
+
+    for(var i=0;i<span.length;i++){  
+        // 当程序运行的时候，会立即执行for语句，在for语句中记录了每一个span的index值，并且给每一个span添加了一个鼠标移入事件
+        // 当鼠标移入span的时候，for语句已经执行完毕，最终i的值等3，在移入事件中还需要使用span的索引值，利用index
+        span[i].index=i;
+        span[i].onmouseover=function(ev){
+            for(var j=0;j<span.length;j++){
+                ul[j].classList.remove('current');
+                span[j].classList.remove('active');
+            }
+            ul[this.index].classList.add('current');
+            this.classList.add('active');
+            // console.log(this.index, ev.target.index);
+        }
+    }
+
+
+    // span[0].onmouseover=function(){
+ 
+    // }
+    // span[1].onmouseover=function(){
+ 
+    // }
+    // span[2].onmouseover=function(){
+ 
+    // }
+
+</script>
+</body>
+</html>

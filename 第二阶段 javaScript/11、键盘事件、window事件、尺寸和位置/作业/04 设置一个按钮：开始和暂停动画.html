@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html,body{
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        .box{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+            top: 100px;
+            left: 100px;
+
+            animation: move  1s linear infinite  alternate forwards;
+        }
+        @keyframes move{
+            0%{
+                /* 开始状态 */
+                left: 100px;
+            }
+            100%{
+                /* 结束状态 */
+                /* 关键帧动画的开始状态的属性和结束状态的属性要保持一致，否则，不能实现动画效果 */
+                left:calc(100% - 100px - 100px); 
+            }
+        }
+        /* 
+        animation关键帧动画 和 transition过渡动画：都是随着时间的改变元素的属性实现动画效果
+        区别：
+            1、transition过渡动画需要一个触发条件：:hover :active；animation在不需要任何触发的条件的情况下，也可以显式的实现动画效果
+            2、过渡动画只有一组：开始状态到结束状态；关键帧动画可以设置每一帧的动画状态，一般用于复杂的动画效果
+         */
+
+    </style>
+</head>
+<body>
+    <input data-play="true" type="button" value="暂停">
+    <div class="box"></div>
+</body>
+    <script>
+        var btn = document.querySelector('input');
+        var box = document.querySelector('.box');
+
+        // btn.onclick = function(){
+        //     if (btn.dataset.play == 'true') {
+        //         //正在播放，点击按钮变成暂停，按钮文字改为播放
+        //         btn.value = '播放';
+        //         box.style.animationPlayState = 'paused';
+        //         btn.dataset.play = 'false';
+        //     } else {
+        //         // 正在暂停
+        //         btn.value = '暂停';
+        //         box.style.animationPlayState = 'running';
+        //         btn.dataset.play = 'true'
+        //     }
+        // }
+
+
+        var isPlaying = true;
+        btn.onclick = function(){
+            if (isPlaying) {
+                //正在播放，点击按钮变成暂停，按钮文字改为播放
+                btn.value = '播放';
+                box.style.animationPlayState = 'paused';
+            } else {
+                // 正在暂停
+                btn.value = '暂停';
+                box.style.animationPlayState = 'running';
+            }
+
+            isPlaying = !isPlaying;
+        }
+
+        // 点击按钮，让div的背景颜色红 和 蓝色 交替变换
+
+        // 方法三
+        // btn.onclick = function(){
+        //     if (btn.value == '暂停') {
+        //         //是播放状态，点击按钮暂停，按钮的文字改为播放
+        //         btn.value = '播放'
+        //         // box.style.backgroundColor = 'blue';
+        //         box.style.animationPlayState = 'paused';
+        //     }else{
+        //         //是暂停状态，点击按钮播放，按钮文字改为暂停
+        //         btn.value = '暂停';
+        //         // box.style.backgroundColor = 'red';
+        //         box.style.animationPlayState = 'running';
+        //     }
+        // }
+
+
+        
+        
+        // 方法二：
+        // var index = 0;
+        // btn.onclick = function(){
+        //     index++;
+        //     index = index%2;//每次让index对2求余得到0或者1再赋值给index，始终保持index的值为0或者1
+        //     console.log(index);
+        //     if (index%2 == 0) {
+        //         box.style.backgroundColor = 'red';
+        //     } else {
+        //         box.style.backgroundColor = 'blue';
+        //     }
+        // }
+
+        // var count = -1;
+        // for(var i = 0; i < 1000; i++){
+        //     count++;
+        //     count = count%10;
+        //     console.log(count);//0-9  任何整数对10求余，取值范围0-9
+        // }
+
+        // 任何正整数对n求余的时候，取值范围[0, n-1]
+
+
+
+
+        // 方法一：
+        /*
+        var isRed = true;//记录是否是红色
+        btn.onclick = function(){
+            if (isRed) {
+                //已经是红色，改为蓝色
+                box.style.backgroundColor = 'blue';
+                // isRed = false;
+            } else {
+                // 已经是蓝色，改为红色
+                box.style.backgroundColor = 'red';
+                // isRed = true;
+            }
+            // 每次点击完毕对自身取反
+            isRed = !isRed;
+        }
+        */
+     
+
+
+
+
+
+
+        // btn.onclick = function(){
+        //     switch(btn.value){
+        //         case '暂停':
+        //         btn.value = '开始';
+        //         box.style.animationPlayState = 'paused';
+        //         break;
+        //         case '开始':
+        //         btn.value = '暂停'
+        //         box.style.animationPlayState = 'running';
+        //         break;
+        //     }
+        // }
+    </script>
+</html>

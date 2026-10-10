@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="author" content="金西振">
+    <title></title>
+    <style>
+        .box{
+            width: 200px;
+            margin: auto;
+            /* background-color: lightcoral; */
+            position: relative;
+        }
+        .box button{
+            height: 30px;
+        }
+        .change{
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            /* background-color: lightblue; */
+            width: 60px;
+            position: absolute;
+            left: 0;
+            top: 30px;
+            text-align: center;
+            border: 1px solid orange;
+            display: none;
+        }
+        .close{
+            border-top: 1px solid orange;
+        }
+        .show{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <button>输入法</button>
+        <ul class="change">
+            <li class="sx">手写</li>
+            <li class="py">拼音</li>
+            <li class="close">关闭</li>
+        </ul>
+    </div>
+<script>
+    var btn = document.querySelector('button');
+    var close = document.querySelector('.close');
+    var changeBox = document.querySelector('.change');
+    var shouXie = document.querySelector('.sx');
+    var pinYin = document.querySelector('.py');
+
+    // 点击按钮 显示，要阻止事件冒泡到document
+    btn.onclick = function(ev){
+        // changeBox.style.display = 'block';
+        changeBox.classList.add('show');//添加类名，在类名中添加元素的样式
+
+        ev.stopPropagation();//阻止按钮的事件冒泡到document
+    }
+
+    // 点击关闭按钮 隐藏
+    close.onclick = function(){
+        console.log('关闭');
+        // changeBox.style.display = 'none';
+        changeBox.classList.remove('show');
+    }
+
+    // 点击空白处 隐藏
+    document.onclick = function(){
+        console.log('隐藏');
+        // changeBox.style.display = 'none';
+        changeBox.classList.remove('show');
+    }
+
+    shouXie.onclick = function(){
+        btn.innerHTML = this.innerHTML;
+    }
+    pinYin.onclick = function(){
+        btn.innerHTML = this.innerHTML;
+    }
+    
+
+
+
+    
+</script>
+</body>
+</html>

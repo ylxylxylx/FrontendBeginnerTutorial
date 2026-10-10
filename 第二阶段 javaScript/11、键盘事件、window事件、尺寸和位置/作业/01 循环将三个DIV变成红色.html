@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 400px;
+            height: 300px;
+
+        }
+
+        .box1 {
+            width: 100px;
+            height: 100px;
+            background-color: black;
+            margin: 10px;
+            float: left;
+        }
+
+        input {
+            display: block;
+            margin: 0 auto;
+            width: 150px;
+            outline: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <input type="button" value="点击将div变成红色" class="input">
+        <div class="box1"></div>
+        <div class="box1"></div>
+        <div class="box1"></div>
+    </div>
+</body>
+<script>
+    var input = document.querySelector('.input');
+    var box = document.querySelectorAll('.box1');
+    var box1 = [];
+    input.onclick = function () {
+        for (var i = 0; i < box.length; i++) {
+            box1.push(box[i]);
+        }
+        i = 0;
+        var timer = setInterval(function () {
+            box1[i].style.background = 'red';
+            i++;
+            if (i > 2) {
+                clearInterval(timer);//移除延迟操作
+            }
+        }, 1000);
+    }
+   
+</script>
+
+</html>

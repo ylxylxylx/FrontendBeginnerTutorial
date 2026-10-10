@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="author" content="金西振">
+    <title></title>
+    <style>
+        /* div{
+            text-align: center;
+        } */
+    </style>
+</head>
+<body>
+    <!-- <div class="box">
+        <h2>存款收益计算器</h2>
+        <form>
+            <input type="text">
+            <input type="text">
+            <input type="text">
+            <input type="text">
+        </form>
+
+    </div> -->
+<script>
+    // 创建 添加 美化
+
+    // 1、创建容器
+    var box = document.createElement('div');
+    document.body.appendChild(box);
+    box.style.width = '500px';
+    box.style.height = '600px';
+    box.style.border = '2px solid orange';
+
+    // 2、标题
+    var h2 = document.createElement('h2');
+    box.appendChild(h2);
+    h2.innerHTML = '存款收益计算器';
+    h2.style.margin = '0';
+    h2.style.textAlign = 'center';
+    h2.style.backgroundColor = 'orange';
+    h2.style.height = '50px';
+    h2.style.lineHeight = '50px';
+    h2.style.color = '#fff';
+
+    // 3、表单
+    var form = document.createElement('form');
+    box.appendChild(form);
+    form.style.padding = '10px'
+
+    var contents = ['还款本金','存款利息','存款期数','计算'];
+
+    var inputs = [];//用来存放input
+    for(var i = 0; i < contents.length; i++){
+        var input = document.createElement('input');
+        form.appendChild(input);
+        input.style.width = '100%';
+        input.style.boxSizing = 'border-box';
+        input.style.border = '1px solid orange';
+        input.style.outline = 'none';
+        input.style.height = '40px';
+        input.style.marginBottom = '10px';
+        input.style.padding = '0 10px';
+        input.placeholder = contents[i];
+        input.classList.add('item');
+
+        inputs.push(input);
+
+        if (i == 3) {
+            input.type = 'button';
+            input.value = contents[i];
+            input.style.color = '#fff';
+            input.style.backgroundColor = 'orange';
+        }
+    }
+
+    // 4、结果
+    var res = document.createElement('p');
+    box.appendChild(res);
+    // res.innerHTML = 1;
+    res.style.textAlign = 'center';
+
+
+    // 计算：
+    // input.value
+    // var inputs = document.getElementsByTagName('input');
+    // var inputs = document.querySelectorAll('.item');
+    // inputs[0]
+
+    // console.log(inputs[0].value);
+    
+    inputs[3].onclick = function(){
+        var benjin = inputs[0].value*1;
+        var lixi = inputs[1].value*1;
+        var qishu = inputs[2].value*1;
+        // console.log(benjin, lixi, qishu);
+        var z = benjin + benjin*lixi*qishu;
+        res.innerHTML = z;
+    }
+
+    
+</script>
+</body>
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>拖拽回放</title>
+    <style>
+        body{
+            background-color: black;
+        }
+        #box{
+            width: 300px;
+            height: 200px;
+            box-shadow: 0 0 20px gray;
+            border: 2px solid gray;
+            position: absolute;
+            /* 100vw 表示浏览器窗口宽度 相当于 html标签的100% */
+            left: calc(50vw - 150px);
+            /* 100vh 表示浏览器窗口高度 */
+            top: calc(50vh - 100px);
+            /* 100% 表示父标签的宽度或高度 */
+        }
+        section{
+            height: 40px;
+            border-bottom: 2px solid gray;
+            background-color: rgba(85, 85, 147, 0.626);
+            cursor: move;
+        }
+        div div{
+            background-color: rgb(76, 76, 76);
+            overflow: hidden;
+        }
+        a{
+            float: right;
+            line-height: 40px;
+            margin-right: 20px;
+            text-decoration: none;
+            color: orange;
+        }
+        p{
+            margin: 0;
+            color: white;
+            margin-left: 20px;
+            line-height: 52px;
+        }
+        p span{
+            color: yellow;
+        }
+
+
+
+
+    
+    </style>
+</head>
+<body>
+    <div id="box">
+        <section>
+            <a href="javascript:;" onmousedown="back(event)">点击回放</a>
+        </section>
+        <div>
+            <p>isDrag: <span>false</span></p>
+            <p>offsetLeft: <span>100</span></p>
+            <p>offsetTop: <span>200</span></p>
+        </div>
+    </div>
+</body>
+<script>
+    // 1, 找标签
+    var box = document.getElementById("box")
+    var section = document.querySelector("section")
+    var spans = document.querySelectorAll("p span")
+
+    // 2, 定义变量
+    var isDrag = false; // 标记拖拽状态
+    var mousedownX , mousedownY; //记录鼠标按下时的坐标
+    var divX, divY;     // 记录鼠标按下时box的坐标
+    var posArray = [];  // 记录box移动过程的中历史坐标
+    // var posArray = [{x:100, y:200},{x:102, y:198}]
+
+    // 初始化界面显示
+    updateUI()
+
+
+
+    // 3, 鼠标按下开始拖拽, 鼠标抬起,结束拖拽
+    section.onmousedown = function(e){
+        isDrag = true;
+        // 记录鼠标在网页上的坐标
+        mousedownX = e.pageX; 
+        mousedownY = e.pageY; 
+        // 记录div在网页上的坐标
+        divX = box.offsetLeft;
+        divY = box.offsetTop;
+        updateUI()
+
+        // 把按下时的初始坐标存入坐标数组
+        var pos = {
+            x: divX,
+            y: divY
+        }
+        posArray.push(pos)
+    }
+    window.onmouseup = function(){
+        isDrag = false;
+        updateUI()
+    }
+
+    // 4, 鼠标按下并移动,让box跟随鼠标移动
+    // 原理: 鼠标按下时记录鼠标坐标,鼠标移动时,计算鼠标坐标差, 让box的坐标差等于鼠标坐标差
+    window.onmousemove = function(e){
+        if(!isDrag) return;   //如果当前没有拖拽则不进行计算
+        // 计算鼠标的坐标差 = 鼠标当前坐标 - 鼠标按下时的坐标
+        var offsetX = e.pageX - mousedownX;
+        var offsetY = e.pageY - mousedownY;
+        // 鼠标坐标差 == box坐标差 = box当前坐标 - 鼠标按下时box的坐标
+        // 计算并更新div当前的坐标 = 鼠标按下时box坐标 + 坐标差
+        var left = divX + offsetX; // 当前div坐标
+        var top = divY + offsetY;
+        // 边界判断
+        // 计算右边界和下边界的坐标 = 窗口宽高 - box宽高
+        var maxX = window.innerWidth - box.offsetWidth;
+        var maxY = window.innerHeight - box.offsetHeight;
+        if(left > maxX) left = maxX;
+        if(top > maxY) top = maxY;
+        if(left < 0) left = 0;
+        if(top < 0) top = 0;
+
+        // 更新坐标
+        box.style.left = left + "px"
+        box.style.top = top + "px"
+
+        // 把最新的坐标存入数组
+        posArray.push({ x: left,  y: top })
+
+        updateUI()
+    }
+
+    // 点击回放轨迹: 每次box坐标变化, 都把新坐标存入数组, 点击回放时,从数组中取出每一个历史坐标,重新赋值
+    function back(e){
+        // 阻止冒泡,防止父标签section响应mousedown事件
+        e.stopPropagation();
+        var timer = setInterval(function(){
+            // 因为坐标存的时候是push到最后的, 所以取得时候用pop从最后向前取
+            var pos = posArray.pop();
+            // 更新div坐标
+            box.style.left = pos.x + "px";
+            box.style.top = pos.y + "px"
+            // 更新ui
+            updateUI()
+            // 结束
+            if(posArray.length <= 0){
+                clearInterval(timer)
+            }
+        },20)
+    }
+
+
+    // 刷新坐标和状态
+    function updateUI(){
+        spans[0].innerText = isDrag;
+        spans[1].innerText = box.offsetLeft;
+        spans[2].innerText = box.offsetTop;
+    }
+
+
+
+
+
+
+</script>
+</html>

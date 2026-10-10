@@ -2,7 +2,7 @@
  * @Author: ylx ylx@qq.com
  * @Date: 2026-10-08 16:01:03
  * @LastEditors: ylx ylx@qq.com
- * @LastEditTime: 2026-10-08 16:41:11
+ * @LastEditTime: 2026-10-10 14:23:52
  * @FilePath: \FrontendBeginnerTutorial\README.md
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -60,20 +60,38 @@
 
 ```
 第二阶段 javaScript/
-├── 1、变量、运算符、分支/  # 编程语言介绍、JS执行过程、变量与数据类型、输入输出、运算符、分支语句
-└── 2、多分支和for循环/    # switch多分支、while/do-while/for循环、break/continue、循环嵌套、练习
+├── 1、变量、运算符、分支/       # 编程语言介绍、JS执行过程、变量与数据类型、输入输出、运算符、分支语句
+├── 2、多分支和for循环/         # switch多分支、while/do-while/for循环、break/continue、循环嵌套、练习
+├── 3、分支和循环练习讲解/      # 分支与循环综合练习、代码调试技巧
+├── 4、函数、提升、字符串处理/   # 函数定义与调用、参数与返回值、变量提升、字符串常用方法
+├── 5、JS内置对象/              # Math、Number、String、Array、Date等内置对象及常用方法
+├── 6、数组和arguments/         # 数组常用操作、数组遍历、冒泡排序、arguments对象
+├── 7、匿名函数、递归、转义字符/ # 匿名函数与自执行函数、递归、转义字符、综合练习
+├── 8、DOM节点、属性节点、Date、定时器/ # DOM基本概念、元素查找/遍历/增删改、Date对象、定时器
+├── 9、DOM鼠标事件、捕获和冒泡/  # 事件三种绑定方式、事件对象、捕获与冒泡、鼠标事件与坐标、拖拽
+├── 10、this、图形变换、过渡动画、帧动画/ # this指向、CSS 2D变换、过渡动画、帧动画、鼠标事件位置
+└── 11、键盘事件、window事件、尺寸和位置/ # 自定义属性、键盘事件、animate库、window事件、尺寸与位置
 ```
 
 ### 知识点概览
 
-- **JS 基础**：编程语言介绍、JavaScript 执行过程
-- **变量与类型**：变量声明、基本数据类型
-- **输入输出**：console.log、prompt、alert
-- **运算符**：算术运算符、关系运算符、逻辑运算符
-- **流程控制**：程序执行流程、分支语句（if/else、switch）
-- **循环**：while、do-while、for 循环、循环嵌套
-- **循环控制**：break 跳出循环、continue 跳过本次
-- **练习**：基础及分支练习、运算符案例、循环练习、综合作业
+- **JS 基础**：编程语言介绍、JavaScript 执行过程、变量与数据类型、输入输出
+- **运算符**：算术运算符、关系运算符、逻辑运算符、赋值运算符
+- **流程控制**：分支语句（if/else、switch）、循环（while、do-while、for）、break/continue
+- **函数**：函数定义与调用、参数与返回值、变量提升、作用域
+- **字符串**：字符串常用方法、字符串遍历、模板字符串
+- **内置对象**：Math、Number、String、Array、Date 等常用方法
+- **数组**：增删改查（push/pop/shift/unshift/splice）、遍历（for/for-in/forEach）、排序、去重
+- **DOM 操作**：节点类型、元素查找（querySelector）、遍历、内容修改、增删改
+- **事件系统**：三种事件绑定方式、事件对象 event、捕获与冒泡、事件传播控制
+- **鼠标事件**：click/mousedown/mouseup/mousemove、坐标系统（pageX/clientX/offsetX）、拖拽实现
+- **this 指向**：七种场景（全局、普通函数、对象方法、事件、构造函数、定时器、回调）
+- **CSS 变换与动画**：translate/scale/rotate、transition 过渡动画、animation 帧动画、@keyframes
+- **键盘事件**：onkeydown/onkeypress/onkeyup、keyCode、组合键判断
+- **window 事件**：onload/onhashchange/onresize/onscroll
+- **尺寸与位置**：clientWidth/offsetWidth/scrollWidth、offsetLeft/getBoundingClientRect、scrollTop
+- **自定义属性**：data-* 属性、dataset、三种从页面向 JS 传值的方式
+- **动画库**：animate.css 的引入和使用
 
 ---
 

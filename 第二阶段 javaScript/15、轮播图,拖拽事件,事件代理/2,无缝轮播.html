@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>无缝轮播</title>
+    <style>
+        main{
+            width: 400px;
+            height: 200px;
+            margin: 100px auto;
+            /* border: 20px dotted; */
+            position: relative;
+            /* overflow: hidden; */
+        }
+        main div img{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            transition: left 1s linear;
+            z-index: 10;
+        }
+        ul{
+            position: absolute;
+            width: 100%;
+            padding: 0;
+            text-align: center;
+            list-style: none;
+            z-index: 100;
+            bottom: 0;
+        }
+        li{
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: white;
+            display: inline-block;
+        }
+        li.active{
+            background-color: aqua;
+        }
+        body div span{
+            display: inline-block;
+            width: 30px;
+            height: 60px;
+            line-height: 60px;
+            text-align: center;
+            color: white;
+            position: absolute;
+            z-index: 100;
+            background-color: rgba(0, 0, 0, 0.3);
+            top: 70px;
+            opacity: 0;
+            transition: all 0.3s;
+        }
+        body div span:hover{
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+        #left{
+            left: -30px;
+        }
+        #right{
+            right: -30px;
+        }
+        main:hover #left{
+            left: 0;
+            opacity: 1;
+        }
+        main:hover #right{
+            right: 0;
+            opacity: 1;
+        }
+    </style>
+
+</head>
+<body>
+    <main>
+        <div>
+            <img src="./img/1.webp" alt="">
+            <img src="./img/2.webp" alt="">
+            <img src="./img/3.webp" alt="">
+            <img src="./img/4.webp" alt="">
+        </div>
+        <ul>
+            <li></li>
+            <li class="active"></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <div id="nav">
+            <span id="left">&lt;</span>
+            <span id="right">&gt;</span>
+        </div>
+    </main>
+</body>
+<script>
+    // 1,找标签
+    var main = document.querySelector("main")
+    var imgs = document.querySelectorAll("body img")
+    var lis = document.querySelectorAll("ul li")
+    var left = document.getElementById("left")
+    var right = document.getElementById("right")
+    var width = main.offsetWidth;
+    var index = 0; // 默认展示第二页, 对应的索引是1
+    var timer ;
+    // 如果过渡正在执行,则禁用手动轮播按钮的点击(过度开始时设置为true,过渡结束还原为false)
+    var moving = false; // 用于记录当前是否正在过渡
+
+    // 2,设置四张图片的left坐标使其左右排列
+    for(var i = 0; i < imgs.length; i++){
+        // 默认让第二张图显示到父标签上, 所以 i-1
+        imgs[i].style.left = i * width + 'px'
+    }
+    imgs[imgs.length-1].style.left = -width + 'px'
+
+    // 开始轮播函数
+    function move(offset){
+        // (一)让所有的图片坐标减300或加300即可实现左滑或右滑
+        for(var i = 0; i < imgs.length; i++){
+            // 先获取这个图片的坐标
+            var left = imgs[i].offsetLeft
+            // 让坐标减300或加300,移动一个位置, 
+            left -= width*offset
+            // 判断边界, 如果超出左边界,则让其位置移动到右边
+            if(left < -width){
+                left = width*2
+                // 图片右移时,应该从下层穿过,左移降低层级
+                imgs[i].style.zIndex = 0
+                // 方案2:  监听过渡结束事件,在过渡结束后提高层级
+                // 更新坐标之后, 过渡开始, 需要在过渡结束后,还原层级
+                imgs[i].ontransitionend = function(){
+                    // transitionend 过渡结束事件, 在过渡执行结束触发
+                    this.style.zIndex = 10
+                    // 过渡结束,更新过渡状态
+                    moving = false;
+                }
+            }
+            // 判断右边界, 如果大于600px, 就移动到左侧-300px
+            if(left > width*2){
+                left = -width
+                // 图片右移时,应该从下层穿过,左移降低层级
+                imgs[i].style.zIndex = 0
+                // 方案2:  监听过渡结束事件,在过渡结束后提高层级
+                // 更新坐标之后, 过渡开始, 需要在过渡结束后,还原层级
+                imgs[i].ontransitionend = function(){
+                    // transitionend 过渡结束事件, 在过渡执行结束触发
+                    this.style.zIndex = 10
+                    // 过渡结束,更新过渡状态
+                    moving = false;
+                }
+            }
+            // 方案1, 如果不是边界那张图,则层级统一提高
+            // else{
+            //     imgs[i].style.zIndex = 10
+            // }
+            // 更新这张图的显示
+            imgs[i].style.left = left + 'px' 
+            // 更新坐标之后, 过渡开始, 记录过渡状态
+            moving = true;
+        }
+
+        // (二)更新指示器显示
+        // 还原
+        lis[index].className = ""
+        // 更新索引
+        index += offset
+        // 判断边界
+        if(index > 3){
+            index = 0
+        }
+        if(index < 0){
+            index = 3
+        }
+        // 刷新界面
+        lis[index].className = "active"
+
+    }
+    
+    // 用计时器自动轮播
+    timer = setInterval("move(1)", 2000)
+    // 鼠标移入父标签暂停轮播,鼠标移出继续轮播
+    main.onmouseenter = function(){
+        clearInterval(timer)
+    }
+    main.onmouseleave = function(){
+        timer = setInterval("move(1)", 2000)
+    }
+
+    // 手动轮播
+    left.onclick = function(){
+        // 如果当前正在执行过渡, 则返回不再执行轮播
+        if(moving) return;
+        // 如果过渡已结束,则执行轮播
+        move(-1)
+    }
+    right.onclick = function(){
+        if(moving) return;
+        move(1)
+    }
+
+
+    /*
+        总结: 限制用户快速连续点击手动轮播,造成过渡冲突的实现步骤
+        1, 在108行定义变量
+        2, 在159行把变量变为true
+        3, 在135和149行把变量还原为false
+        4, 在192和197行判断变量,限制用户操作
+    */
+
+</script>
+</html>

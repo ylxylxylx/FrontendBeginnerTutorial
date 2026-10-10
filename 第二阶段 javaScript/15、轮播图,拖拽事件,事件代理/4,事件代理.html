@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>事件代理</title>
+    <style>
+        img{
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div id="d1">
+        <img src="./img/1.webp" alt="">
+        <img src="./img/2.webp" alt="">
+        <img src="./img/3.webp" alt="">
+        <img src="./img/4.webp" alt="">
+        <h1>标题</h1>
+    </div>
+</body>
+<script>
+    // 需求: 给div中所有的img标签添加点击事件
+
+    // 1, 不使用代理/委托的写法:
+    var imgs = document.querySelectorAll("body img")
+    for(var i = 0; i < imgs.length; i++){
+        imgs[i].onclick = function(){
+            console.log("点击了图片")
+        }
+    }
+
+    // 2, 使用代理/委托: 让父标签代理子标签的事件绑定
+    // 原理: 子标签的事件会冒泡给父标签
+    // 好处: 避免了子标签的查找与循环, 优化网页执行效率
+    d1.onclick = function(e){
+        console.log("点击了标签")
+        // 因为是给父标签绑定的事件,默认父标签及其所有子标签的点击都会触发事件
+        // 所以需要过滤其他标签,只响应img标签
+        console.log(e.target)  // 触发事件的元素, 可能是标签img或h1或#d1
+        console.log(e.currentTarget)  // 事件目标this, 必须是#d1
+        // 判断触发事件的元素的节点名, 获得点击的元素是不是图片
+        if(e.target.nodeName == "IMG"){
+            alert("点击了图片")
+        }else{
+            // 不做操作
+        }
+    }
+
+
+
+</script>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>拖拽事件</title>
+    <style>
+        div{
+            width: 100px; height: 50px;
+            background-color: yellow; 
+        }
+        #div2{
+            background-color: white;
+            border: 1px solid ;
+            width: 300px; height: 300px;
+            line-height: 100px;
+            text-align: center;
+
+        }
+    </style>
+</head>
+<body>
+    <a draggable="false" href="./2,无缝轮播.html">轮播图</a>
+    <img draggable="false" src="img/jd1.jpg" alt="">
+    <div draggable="true" id="div1">你好div1</div>
+    <div id="div2">拖动图片到这里</div>
+    <!-- html标签中有属性draggable用于控制标签能否被拖动 
+        值为false表示不能拖动, 值为true表示可以拖动 
+        超链接标签a和图片img 他们的draggable属性值默认为true
+        其他大部分标签默认值都是false-->
+</body>
+<script>
+    // 注: 拖拽事件触发的前提是:标签的draggable属性值为true 
+    var div1 = document.getElementById("div1")
+    var div2 = document.getElementById("div2")
+    // 在html中标签设置id值之后,js中会生成一个与id值同名的变量,指向这个标签
+    console.log(div1)
+    // 但不建议直接用id名, 缺点: 1, 容易变量名冲突, 2, 没有语法提示
+
+    // 1, dragstart  开始拖拽事件
+    div1.ondragstart = function(){
+        console.log("开始拖拽")
+    }
+
+    // 2, drag  正在拖拽事件 (连续触发)
+    div1.ondrag = function(){
+        console.log("正在拖拽")
+    }
+
+    // 3, dragend  拖拽结束事件 (松开鼠标触发)
+    div1.ondragend = function(){
+        console.log("拖拽结束")
+    }
+
+    // 4, dragexit 拖拽取消事件 (离开窗口区域触发)
+    div1.ondragexit = function(){
+        console.log("拖拽取消")
+    }
+
+    // 注: 以上四个事件绑定拖拽标签本身div1, 
+    //     以下三个事件绑定拖拽区域div2 
+    
+    // dragenter  拖入事件
+    div2.ondragenter = function(){
+        console.log("有东西被拖拽进入这个标签")
+    }
+
+    // dragleave 拖出事件
+    div2.ondragleave = function(){
+        console.log("有什么东西被拖出这个标签")
+    }
+
+    // dragover 拖动事件  连续触发
+    div2.ondragover = function(e){
+        console.log("有什么东西正在这个标签中拖动")
+        e.preventDefault();
+        // 由于浏览器对dragover事件有默认行为, 它会阻止drop事件触发, 所以如果要给标签绑定drop事件, 必须先阻止(目标标签div2或window)dragover事件的默认行为
+    }
+
+    // drop丢入事件: 拖拽元素被拖入事件目标并松开鼠标
+    div2.ondrop = function(e){
+        // 由于浏览器对drop事件也有默认行为(图片拖入,全屏展示), 需要阻止
+        e.preventDefault()
+        // console.log("有什么东西被丢入这个标签中", e)
+        // div2.appendChild(div1)
+
+        // e.dataTransfer.files 是拖入的文件列表
+        console.log(e.dataTransfer.files)
+
+        // 取出拖入的第一个文件
+        var file = e.dataTransfer.files[0]
+
+        if(!file){
+            // 如果拖入的不是文件(比如标签),则返回
+            div2.appendChild(div1)
+            return
+        }
+
+        // 判断这个文件是否是图片类型
+        if(file.type.startsWith("image")){
+            // URL.createObjectURL()  可获取一个文件的本地缓存地址,参数是文件对象
+            var url = URL.createObjectURL(file)
+            console.log(url)
+            div2.innerHTML = "<img src="+url+">"  
+        }else{
+            // 如果拖入的不是图片,则展示拖入文件的文件名
+            div2.innerText = file.name
+        }
+    }
+    
+
+    
+
+</script>
+</html>

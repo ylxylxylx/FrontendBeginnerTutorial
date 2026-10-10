@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>简易的轮播图</title>
+    <style>
+        main {
+            width: 800px;
+            height: 400px;
+            margin: 0 auto;
+            border: 1px solid blue;
+            position: relative;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            opacity: 0;
+            transition: all 0.5s;
+        }
+
+        img.active {
+            /* display: inline-block; */
+            opacity: 1;
+        }
+
+        ul {
+            width: 100%;
+            position: absolute;
+            padding: 0;
+            list-style: none;
+            text-align: center;
+            bottom: 20px;
+            z-index: 100;
+        }
+
+        li {
+            width: 30px;
+            height: 30px;
+            background-color: #fff;
+            border-radius: 50%;
+            margin: 5px;
+            display: inline-block;
+            transition: all 0.5s;
+        }
+
+        /* 找到class值为active的li标签 */
+        li.active {
+            background-color: blue;
+        }
+
+        /* 左右 */
+        .img-click span {
+            width: 30px;
+            height: 40px;
+            position: absolute;
+            line-height: 40px;
+            text-align: center;
+            background-color: black;
+            color: white;
+            cursor: pointer;
+            display: none;
+        }
+
+        .img-click .left {
+            top: 180px;
+            left: 0px;
+        }
+
+        .img-click .right {
+            top: 180px;
+            right: 0px;
+        }
+        main:hover span{
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+
+    <main>
+        <div>
+            <img class="active" src="./img/kn1.jpg" alt="">
+            <img src="./img/jd1.jpg" alt="">
+            <img src="./img/hyr.jpg" alt="">
+            <img src="./img/柯南手表.gif" alt="">
+        </div>
+        <ul>
+            <li class="active"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <!-- 翻页导航: 手动翻页的点击左右按钮 -->
+        <div class="img-click">
+            <span class="left">&lt;</span>
+            <span class="right">&gt;</span>
+        </div>
+    </main>
+
+</body>
+
+<script>
+    var main = document.querySelector('main');
+    var imgs = document.querySelectorAll('body img');
+    console.log(imgs)
+    var lis = document.querySelectorAll('ul li');
+    var left = document.querySelector('.left');
+    var right = document.querySelector('.right');
+
+    var index = 0;  //记录当前展示的图片索引
+    var timer;
+
+    // 切换图片的函数
+    function change(offset) {
+        // 先隐藏上一张图;并还原上一个指示器
+        imgs[index].className = '';
+        lis[index].className = '';
+        // 更新索引
+        index += offset;   //index = index + offset
+        // 循环索引,判断两个边界
+        if (index > 3) {
+            index = 0;
+        }
+        if(index < 0){
+            index = imgs.length - 1
+        }
+        // 让下一张显示;并点亮下一个指示器
+        imgs[index].className = 'active';
+        lis[index].className = 'active';
+
+        //    总结：循环操作数据常规步骤：
+        //   1.还原视图  2.更新索引  3、判断边界 4、更新视图
+    }
+
+    // ----------------------功能1: 自动轮播-----------------
+    // 用计时器调用轮播函数，自动轮播
+    timer = setInterval("change(1)", 2000);
+    // 鼠标移入暂停自动轮播, 鼠标移出继续自动轮播
+    main.onmouseover = function () {
+        clearInterval(timer);
+    }
+    main.onmouseout = function () {
+        // timer = setInterval(change, 2000);   // 不传参写法
+        timer = setInterval("change(1)", 2000); // 传参写法
+    }
+
+    // -----------------------功能2: 手动轮播---------------------
+    // 点击右侧按钮让其翻到下一页
+    right.onmousedown = function () {
+        change(1);
+    }
+    // 点击左侧按钮让其翻到上一页
+    left.onmousedown = function () {
+        // 优化逻辑
+        change(-1)
+
+        // // 1, 还原
+        // imgs[index].className = '';
+        // lis[index].className = '';
+        // // 2, 改变索引
+        // // if (index == 0) {
+        // //     index = imgs.length - 1;
+        // // } else {
+        // //     index--;
+        // // }
+        // index --
+        // if(index < 0){
+        //     index = imgs.length - 1;
+        // }
+        // // 4, 更新界面
+        // imgs[index].className = 'active';
+        // lis[index].className = 'active';
+    }
+
+
+    // -----------------------功能3: 指示器切换-----------------
+    // 鼠标移入指示器, 翻页
+    for(var i = 0; i < lis.length; i++){
+        lis[i].count = i
+        lis[i].onmouseover = function(){
+            // 还原
+            imgs[index].className = '';
+            lis[index].className = '';
+            // 更新索引
+            index = this.count
+            // 更新界面
+            imgs[index].className = 'active';
+            lis[index].className = 'active';
+        }
+    }
+
+
+
+</script>
+
+<!-- 添加手动轮播功能，在轮播图左右添加箭头，点击箭头向左向右轮播 -->
+
+</html>

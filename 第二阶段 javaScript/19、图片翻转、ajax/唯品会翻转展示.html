@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>唯品会翻转</title>
+    <style>
+        section{
+            width: 300px;
+            height: 300px;
+            position: relative;
+        }
+        div{
+            width: 100%;
+            height: 100%;
+            border: 1px solid;
+            position: absolute;
+        }
+        img{
+            width: 300px;
+            height: 260px;
+        }
+        p{
+            text-align: center;
+            margin: 0;
+            line-height: 30px;
+            background-color: white;
+        }
+        #div1{
+            animation: change1 6s linear infinite;
+        }
+
+        /* 图A的显示隐藏流程动画: 绕着Y轴旋转90deg即可隐藏 */
+        @keyframes change1{
+            0%{transform: rotateY(0deg);opacity: 1;} /*1,图A显示状态*/
+            30%{transform: rotateY(0deg);opacity: 1;} /*2,图A显示状态,即将开始隐藏 */
+            40%{transform: rotateY(90deg);opacity: 0;} /*3,图A已经完全隐藏*/
+            50%{transform: rotateY(90deg);opacity: 0;} /*4, 图A保持隐藏状态*/
+            80%{transform: rotateY(90deg);opacity: 0;} /*5 图A保持隐藏状态 */
+            90%{transform: rotateY(90deg);opacity: 0;} /*6 图A隐藏状态, 即将开始显示 */
+            100%{transform: rotateY(0deg);opacity: 1;} /*7,图A已经完全显示 */
+        }
+        #div2{
+            animation: change1 6s linear 3s infinite;
+            /* change1的0%-50%和change2的50%-100%完全一样,  
+               change1的50%-100%和change2的0%-50%完全一样, 
+               说明change1和change2是相反的 
+               那么如果change1执行到50%时,让change2开始执行, 则两个动画就同步了
+               同理: 让div1和div2执行同一个动画, div1执行到50%时,让div2开始执行,则可以让div1和div2刚好相反*/
+        }
+        
+        @keyframes change2{
+            0%{transform: rotateY(90deg);opacity: 0;} /*1,图B隐藏状态*/
+            30%{transform: rotateY(90deg);opacity: 0;} /*2,图B隐藏状态 */
+            40%{transform: rotateY(90deg);opacity: 0;} /*3,图B隐藏状态,即将开始显示*/
+            50%{transform: rotateY(0deg);opacity: 1;} /*4, 图B已经完全显示*/
+            80%{transform: rotateY(0deg);opacity: 1;} /*5 图B显示状态,即将开始隐藏 */
+            90%{transform: rotateY(90deg);opacity: 0;} /*6 图B隐藏结束 */
+            100%{transform: rotateY(90deg);opacity: 0;} /*7,图B隐藏状态 */
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        在这个例子中, 一共有两个图片A和B,来回切换显示
+        假设我们把整个显示隐藏过程(重复)拆分成几个步骤: 
+        1, 图A显示状态, b隐藏状态, 时间2s
+        2, 图A旋转隐藏, b隐藏状态, 时间0.5s
+        3, 图A隐藏状态, b旋转显示, 时间0.5s
+        4, 图A隐藏状态, b显示状态, 时间2s
+        5, 图A隐藏状态, b旋转隐藏, 时间0.5s
+        6, 图A旋转显示, b隐藏状态, 时间0.5s
+
+        总结: 一次循环总时间是: 6s
+    -->
+    <section>
+        <div id="div1">
+            <img src="img/1.gif" alt="">
+            <p>正面</p>
+        </div>
+        <div id="div2">
+            <img src="img/2.gif" alt="">
+            <p>反面</p>
+        </div>
+    </section>
+</body>
+</html>

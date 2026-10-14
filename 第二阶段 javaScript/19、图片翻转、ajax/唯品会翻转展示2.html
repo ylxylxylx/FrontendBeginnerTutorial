@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>唯品会翻转</title>
+    <style>
+        section{
+            width: 300px;
+            height: 300px;
+            position: relative;
+        }
+        div{
+            width: 100%;
+            height: 100%;
+            border: 1px solid;
+            position: absolute;
+            transition: all 0.5s ;
+        }
+        #div2{
+            /* 默认反面是隐藏状态 */
+            transform: rotateY(90deg) ;
+            opacity: 0;
+        }
+        img{
+            width: 300px;
+            height: 260px;
+        }
+        p{
+            text-align: center;
+            margin: 0;
+            line-height: 30px;
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        在这个例子中, 一共有两个图片A和B,来回切换显示
+        假设我们把整个显示隐藏过程(重复)拆分成几个步骤: 
+        1, 图A显示状态, b隐藏状态, 时间2s      前4次计时
+        2, 图A旋转隐藏, b隐藏状态, 时间0.5s    第5次计时
+        3, 图A隐藏状态, b旋转显示, 时间0.5s    第6次计时
+        4, 图A隐藏状态, b显示状态, 时间2s      第7-10次计时
+        5, 图A隐藏状态, b旋转隐藏, 时间0.5s    第11次计时
+        6, 图A旋转显示, b隐藏状态, 时间0.5s    第12次计时
+
+        总结: 一次循环总时间是: 6s
+    -->
+    <section>
+        <div id="div1">
+            <img src="img/1.gif" alt="">
+            <p>正面</p>
+        </div>
+        <div id="div2">
+            <img src="img/2.gif" alt="">
+            <p>反面</p>
+        </div>
+    </section>
+</body>
+<script>
+    var div1 = document.getElementById("div1")
+    var div2 = document.getElementById("div2")
+    // 状态改变的最小时间间隔是0.5s, 所以计时器延时时间0.5s
+    // 因为一次循环需要6秒, 所以计时12次是一个循环
+    var index = 0 ; //总计时次数
+    setInterval(function(){
+        index ++;
+        // 计时12次是一个循环, 所以对12取余得到这次循环中的第几次计时
+        // if(index % 12 == 4){
+        //     div1.style.transform = "rotateY(0deg)"
+        //     div1.style.opacity = "1"
+        // }
+        if(index % 12 == 5){
+            div1.style.transform = "rotateY(90deg)"
+            div1.style.opacity = "0"
+        }
+        if(index % 12 == 6){
+            div2.style.transform = "rotateY(0deg)"
+            div2.style.opacity = "1"
+        }
+        // if(index % 12 == 10){
+        //     div1.style.transform = "rotateY(90deg)"
+        //     div1.style.opacity = "0"
+        // }
+        if(index % 12 == 11){
+            div2.style.transform = "rotateY(90deg)"
+            div2.style.opacity = "0"
+        }
+        if(index % 12 == 0){
+            div1.style.transform = "rotateY(0deg)"
+            div1.style.opacity = "1"
+        }
+    },500);
+
+
+</script>
+</html>
